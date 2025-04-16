@@ -1,0 +1,2 @@
+# veterinarik
+Testovanie aplikácie Veterinárik
