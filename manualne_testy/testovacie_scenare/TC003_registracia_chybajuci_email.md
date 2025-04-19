@@ -1,5 +1,4 @@
-# Testovací scenár č. TC001
-
+# Testovací scenár č. TC003
 ## Názov
 Registrácia používateľa - chýbajúci email
 
