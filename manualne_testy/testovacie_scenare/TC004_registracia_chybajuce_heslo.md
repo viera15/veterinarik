@@ -1,4 +1,4 @@
-# Testovací scenár č. TC001
+# Testovací scenár č. TC004
 
 ## Názov
 Registrácia používateľa - chýbajúce heslo
