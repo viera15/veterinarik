@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Správa testovacích scenárov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Správa testovacích scenárov</h1>
+
+    <button onclick="window.location.href='novy_test_scenar.html'">Nový testovací scenár</button>
+    <button onclick="zmazatVybrane()">Zmazať vybrané</button>
+    <button onclick="precislovat()">Prečíslovať vybrané</button>
+
+    <table id="tabulka">
+        <thead>
+            <tr>
+                <th>Výber</th>
+                <th>Číslo testu</th>
+                <th>Názov testu</th>
+                <th>Priorita</th>
+                <th>Závislosť</th>
+                <th>Akcia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- dynamicky doplnené riadky -->
+        </tbody>
+    </table>
+
+    <script>
+    // Funkcia na načítanie zoznamu scenárov zo súboru JSON
+    window.onload = () => {
+        fetch('zoznam_scenarov.json')
+            .then(res => res.json())
+            .then(data => {
+                const tbody = document.querySelector('#tabulka tbody');
+                tbody.innerHTML = '';
+                data.forEach(scenar => {
+                    const tr = document.createElement('tr');
+
+                    tr.innerHTML = `
+                        <td><input type="checkbox"></td>
+                        <td>${scenar.cisloTestu}</td>
+                        <td>${scenar.nazov}</td>
+                        <td>${scenar.priorita}</td>
+                        <td>${scenar.zavislost}</td>
+                        <td>
+                            <button onclick="zobrazit('${encodeURIComponent(scenar.subor)}')">Zobraziť</button>
+                            <button onclick="upravit('${encodeURIComponent(scenar.subor)}')">Upraviť</button>
+                            <button onclick="zmazat('${encodeURIComponent(scenar.subor)}')">Zmazať</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(err => console.error('Chyba pri načítaní zoznam_scenarov.json:', err));
+    };
+
+    function zobrazit(subor) {
+        // Presmerovanie na zobrazenie testu s readonly režimom
+        window.location.href = `novy_test_scenar.html?subor=${encodeURIComponent(subor)}&readonly=true`;
+    }
+
+    function upravit(subor) {
+        // Presmerovanie na úpravu testu
+        window.location.href = `novy_test_scenar.html?subor=${encodeURIComponent(subor)}&readonly=false`;
+    }
+
+    function zmazat(subor) {
+        alert(`Mazanie testu ${subor} zatiaľ nie je implementované.`);
+    }
+
+    function zmazatVybrane() {
+        alert('Táto funkcia zatiaľ nie je implementovaná.');
+    }
+
+    function precislovat() {
+        alert('Táto funkcia zatiaľ nie je implementovaná.');
+    }
+    </script>
+</body>
+</html>
