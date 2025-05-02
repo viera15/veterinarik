@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Nový testovací scenár</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Nový testovací scenár</h1>
+
+    <form id="formularTestu">
+        <!-- Základné údaje o teste ------------------------------------->
+        <label for="cisloTestu">Číslo testu:</label>
+        <input type="text" id="cisloTestu" required>
+
+        <label for="nazovTestu">Názov:</label>
+        <input type="text" id="nazovTestu" required>
+
+        <label for="ciel">Cieľ:</label>
+        <textarea id="ciel" rows="3" required></textarea>
+
+        <label for="predpoklady">Predpoklady:</label>
+        <textarea id="predpoklady" rows="3"></textarea>
+
+        <!-- Dynamické testovacie kroky --------------------------------->
+        <h3>Testovacie kroky:</h3>
+        <div id="testovacie-kroky-container"></div>
+        <button type="button" id="pridatKrok">Pridať krok</button>
+
+        <label for="ocakavanyVysledok">Očakávaný výsledok (scenára):</label>
+        <textarea id="ocakavanyVysledok" rows="3"></textarea>
+
+        <label for="zavislost">Závislosť:</label>
+        <input type="text" id="zavislost">
+
+        <label for="priorita">Priorita:</label>
+        <select id="priorita">
+            <option value="vysoká">vysoká</option>
+            <option value="stredná">stredná</option>
+            <option value="nízka">nízka</option>
+            <option value="nižšia">nižšia</option>
+        </select>
+
+        <label for="poznamky">Poznámky:</label>
+        <textarea id="poznamky" rows="3"></textarea>
+
+        <!-- Ovládacie tlačidlá ----------------------------------------->
+        <button type="button" id="ulozit">Uložiť</button>
+        <button type="button" id="zrusit">Zrušiť</button>
+    </form>
+
+    <!-- Modálne okno po úspešnom uložení ------------------------------->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>Scenár bol uložený. Chceš vytvoriť ďalší test?</p>
+            <button id="novyTest">Nový test</button>
+            <button id="spravaTestov">Správa testov</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
